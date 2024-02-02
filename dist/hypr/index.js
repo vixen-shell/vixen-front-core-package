@@ -1,58 +1,43 @@
-import { hyprEventsHandler as o } from "./HyprEvents.js";
-var c;
-((t) => {
-  const v = [
-    "workspace",
-    "focusedmon",
-    "activewindow",
-    "fullscreen",
-    "monitorremoved",
-    "monitoradded",
-    "createworkspace",
-    "destroyworkspace",
-    "moveworkspace",
-    "activelayout",
-    "openwindow",
-    "closewindow",
-    "movewindow",
-    "openlayer",
-    "closelayer",
-    "submap",
-    "changefloatingmode",
-    "urgent",
-    "minimize",
-    "screencast",
-    "windowtitle"
-  ], s = {
-    add: (n, e) => {
-      o.addEventListener(n, e);
+import { hyprEventsHandler as n } from "./HyprEvents.js";
+var w;
+((i) => {
+  let a;
+  ((e) => {
+    e.workspace = "workspace", e.focusedmon = "focusedmon", e.activewindow = "activewindow", e.fullscreen = "fullscreen", e.monitorremoved = "monitorremoved", e.monitoradded = "monitoradded", e.createworkspace = "createworkspace", e.destroyworkspace = "destroyworkspace", e.moveworkspace = "moveworkspace", e.activelayout = "activelayout", e.openwindow = "openwindow", e.closewindow = "closewindow", e.movewindow = "movewindow", e.openlayer = "openlayer", e.closelayer = "closelayer", e.submap = "submap", e.changefloatingmode = "changefloatingmode", e.urgent = "urgent", e.minimize = "minimize", e.screencast = "screencast", e.windowtitle = "windowtitle";
+  })(a = i.EventIds || (i.EventIds = {}));
+  const c = {
+    add: (e, o) => {
+      n.addEventListener(e, o);
     },
-    remove: (n, e) => {
-      o.removeEventListener(n, e);
+    remove: (e, o) => {
+      n.removeEventListener(e, o);
     }
   };
-  function a(n, e, i) {
-    Array.isArray(e) && e.forEach((r) => n(r, i)), typeof e == "string" && (e === "all" ? v.forEach(
-      (r) => n(r, i)
-    ) : n(e, i));
+  function s(e, o, r) {
+    if (Array.isArray(o) && o.forEach((t) => e(t, r)), typeof o == "string")
+      if (o === "all")
+        for (const t in a)
+          e(t, r);
+      else
+        e(o, r);
   }
-  function d(n, e) {
-    a(s.add, n, e);
+  function m(e, o) {
+    s(c.add, e, o);
   }
-  t.addEventListener = d;
-  function m(n, e) {
-    a(s.remove, n, e);
+  i.addEventListener = m;
+  function l(e, o) {
+    s(c.remove, e, o);
   }
-  t.removeEventListener = m;
+  i.removeEventListener = l;
   function f() {
-    o.startListening();
+    n.startListening();
   }
-  t.startEventsListening = f;
-  function E() {
-    o.stopListening();
+  i.startEventsListening = f;
+  function p() {
+    n.stopListening();
   }
-  t.stopEventsListening = E;
-})(c || (c = {}));
+  i.stopEventsListening = p;
+})(w || (w = {}));
 export {
-  c as Hypr
+  w as Hypr
 };
