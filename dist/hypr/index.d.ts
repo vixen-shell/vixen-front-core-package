@@ -1,5 +1,5 @@
 export declare namespace Hypr {
-    export enum EventIds {
+    enum EventIds {
         workspace = "workspace",
         focusedmon = "focusedmon",
         activewindow = "activewindow",
@@ -23,9 +23,8 @@ export declare namespace Hypr {
         windowtitle = "windowtitle"
     }
     type EventId = keyof typeof EventIds;
-    export function addEventListener(eventIds: (EventId | 'all') | EventId[], listener: (data: object) => any): void;
-    export function removeEventListener(eventIds: (EventId | 'all') | EventId[], listener: (data: object) => any): void;
-    export function startEventsListening(): void;
-    export function stopEventsListening(): void;
-    export {};
+    function addEventListener(eventIds: (EventId | 'all') | EventId[], listener: (data: object) => any): void;
+    function removeEventListener(eventIds: (EventId | 'all') | EventId[], listener: (data: object) => any): void;
+    function startEventsListening(): void;
+    function stopEventsListening(): void;
 }
